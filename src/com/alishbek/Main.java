@@ -12,13 +12,16 @@ public class Main {
             } catch (LimitException limitException){
                 limitException.getMessage();
                 try {
-                    bankAccount.withDraw(limitException.getRemainingAmount()); //вот тут remaining amount  остается 2000
+                    bankAccount.withDraw(limitException.getRemainingAmount());
                 }catch (LimitException limitException1){
 
                 }
+                if (bankAccount.getAmount()==0){
+                    limitException.setRemainingAmount(0.0);
+                }
 
                 System.out.println(bankAccount.getAmount());
-                System.out.println(limitException.getRemainingAmount()); 
+                System.out.println(limitException.getRemainingAmount());
                 break;
             }
 
